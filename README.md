@@ -64,4 +64,23 @@ Error messages will be managed to avoid exposing stack traces or internal system
 
 Security is crucial in this project to protect user personal data, maintain system stability, secure financial transactions, and build user trust in the platform.
 
+## CI/CD Pipeline
+
+CI/CD (Continuous Integration and Continuous Deployment) pipelines automate the process of testing, building, and deploying code changes. They help ensure that new features or bug fixes are integrated smoothly without breaking the existing functionality.
+
+For the Airbnb Clone project, CI/CD is important because it:
+- Automates testing to catch errors early.
+- Speeds up development by reducing manual deployment steps.
+- Ensures consistent and reliable delivery of updates to production or staging environments.
+
+### Tools Used:
+- **GitHub Actions**: Automates workflows such as testing and deploying the application when code is pushed or a pull request is made.
+- **Docker**: Standardizes the development and deployment environments using containers.
+- **Docker Hub or GitHub Packages**: Stores and manages container images.
+- **(Optional)**: **Vercel**, **Netlify**, or **Heroku** can be used for frontend deployment; **Render**, **Railway**, or **DigitalOcean** for backend services.
+
+A well-configured CI/CD pipeline improves developer productivity, reduces bugs in production, and speeds up the release cycle.
+
+
+
 
