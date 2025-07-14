@@ -37,3 +37,31 @@ Users can save properties to a favorites list for quick access later. This allow
 An admin panel to manage users, properties, and bookings. Useful for platform moderators to monitor activities and enforce rules.
 
 ---
+## API Security
+
+Securing backend APIs is a critical part of the Airbnb Clone project to ensure data integrity, user trust, and protection against malicious activities. Below are the key security measures that will be implemented:
+
+### 1. Authentication
+Only registered users can access protected routes using secure login systems (e.g., JWT or OAuth). Authentication helps verify the identity of users and prevents unauthorized access to accounts and sensitive operations.
+
+### 2. Authorization
+Different levels of access are enforced (e.g., guest, host, admin). Authorization ensures that users can only perform actions they're permitted to (e.g., a user can’t delete another user's listing).
+
+### 3. Rate Limiting
+Rate limiting protects the backend from abuse by limiting the number of API requests a user can make within a specific timeframe. This helps mitigate brute-force attacks and reduce server load.
+
+### 4. Input Validation & Sanitization
+All incoming data will be validated and sanitized to prevent injection attacks (e.g., SQL injection, XSS). This ensures that user input doesn't compromise the database or application behavior.
+
+### 5. HTTPS Enforcement
+All communication with the backend will use HTTPS to encrypt data in transit. This protects sensitive data like login credentials and payment information from being intercepted.
+
+### 6. Secure Data Storage
+Sensitive data such as passwords will be hashed (e.g., using bcrypt) before storage. Storing passwords securely protects users in case of a database breach.
+
+### 7. Error Handling
+Error messages will be managed to avoid exposing stack traces or internal system details. Proper error handling improves security by not leaking information that attackers could use.
+
+Security is crucial in this project to protect user personal data, maintain system stability, secure financial transactions, and build user trust in the platform.
+
+
