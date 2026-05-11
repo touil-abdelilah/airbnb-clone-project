@@ -78,9 +78,7 @@ For the Airbnb Clone project, CI/CD is important because it:
 - **GitHub Actions**: Automates workflows such as testing and deploying the application when code is pushed or a pull request is made.
 - **Docker**: Standardizes the development and deployment environments using containers.
 - **Docker Hub or GitHub Packages**: Stores and manages container images.
-- **(Optional)**: **Vercel**, **Netlify**, or **Heroku** can be used for frontend deployment; **Render**, **Railway**, or **DigitalOcean** for backend services.
 
-A well-configured CI/CD pipeline improves developer productivity, reduces bugs in production, and speeds up the release cycle.
 
 
 
