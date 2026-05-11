@@ -14,6 +14,256 @@ Airbnb Clone Project is a comprehensive, real-world application designed to simu
 -->
 ## Database Design
 
+---
+
+# Entities and Attributes
+
+## 1. User
+
+Represents guests, hosts, and administrators.
+
+| Column | Type | Constraints |
+|---|---|---|
+| user_id | UUID | Primary Key, Indexed |
+| first_name | VARCHAR(50) | NOT NULL |
+| last_name | VARCHAR(50) | NOT NULL |
+| email | VARCHAR(100) | UNIQUE, NOT NULL |
+| password_hash | VARCHAR(255) | NOT NULL |
+| phone_number | VARCHAR(20) | NULL |
+| role | ENUM('guest', 'host', 'admin') | NOT NULL |
+| created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
+
+### Constraints
+- Unique constraint on `email`
+- Required fields cannot be NULL
+
+---
+
+## 2. Property
+
+Represents properties listed by hosts.
+
+| Column | Type | Constraints |
+|---|---|---|
+| property_id | UUID | Primary Key, Indexed |
+| host_id | UUID | Foreign Key → User(user_id) |
+| name | VARCHAR(100) | NOT NULL |
+| description | TEXT | NOT NULL |
+| location | VARCHAR(255) | NOT NULL |
+| price_per_night | DECIMAL(10,2) | NOT NULL |
+| created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
+| updated_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP |
+
+### Relationships
+- One host can own many properties
+- One property belongs to one host
+
+---
+
+## 3. Booking
+
+Represents reservations made by users.
+
+| Column | Type | Constraints |
+|---|---|---|
+| booking_id | UUID | Primary Key, Indexed |
+| property_id | UUID | Foreign Key → Property(property_id) |
+| user_id | UUID | Foreign Key → User(user_id) |
+| start_date | DATE | NOT NULL |
+| end_date | DATE | NOT NULL |
+| total_price | DECIMAL(10,2) | NOT NULL |
+| status | ENUM('pending', 'confirmed', 'canceled') | NOT NULL |
+| created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
+
+### Constraints
+- `start_date < end_date`
+- Status must be:
+  - `pending`
+  - `confirmed`
+  - `canceled`
+
+---
+
+## 4. Payment
+
+Represents payment transactions for bookings.
+
+| Column | Type | Constraints |
+|---|---|---|
+| payment_id | UUID | Primary Key, Indexed |
+| booking_id | UUID | Foreign Key → Booking(booking_id) |
+| amount | DECIMAL(10,2) | NOT NULL |
+| payment_date | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
+| payment_method | ENUM('credit_card', 'paypal', 'stripe') | NOT NULL |
+
+### Relationships
+- One booking can have one or more payments
+
+---
+
+## 5. Review
+
+Represents user feedback on properties.
+
+| Column | Type | Constraints |
+|---|---|---|
+| review_id | UUID | Primary Key, Indexed |
+| property_id | UUID | Foreign Key → Property(property_id) |
+| user_id | UUID | Foreign Key → User(user_id) |
+| rating | INTEGER | CHECK (rating BETWEEN 1 AND 5) |
+| comment | TEXT | NOT NULL |
+| created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
+
+### Constraints
+- Rating must be between 1 and 5
+
+---
+
+## 6. Message
+
+Represents direct communication between users.
+
+| Column | Type | Constraints |
+|---|---|---|
+| message_id | UUID | Primary Key, Indexed |
+| sender_id | UUID | Foreign Key → User(user_id) |
+| recipient_id | UUID | Foreign Key → User(user_id) |
+| message_body | TEXT | NOT NULL |
+| sent_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
+
+---
+
+# Relationships
+
+| Relationship | Type |
+|---|---|
+| User → Property | One-to-Many |
+| User → Booking | One-to-Many |
+| Property → Booking | One-to-Many |
+| Booking → Payment | One-to-Many |
+| User → Review | One-to-Many |
+| Property → Review | One-to-Many |
+| User → Message | One-to-Many |
+
+---
+
+# Constraints
+
+## User Table
+- Unique constraint on `email`
+- Non-null required fields
+
+## Property Table
+- Foreign key constraint on `host_id`
+
+## Booking Table
+- Foreign key constraints on:
+  - `property_id`
+  - `user_id`
+- Booking status restricted to:
+  - `pending`
+  - `confirmed`
+  - `canceled`
+
+## Payment Table
+- Foreign key constraint on `booking_id`
+
+## Review Table
+- Rating constraint:
+```sql
+CHECK (rating BETWEEN 1 AND 5)
+```
+
+## Message Table
+- Foreign key constraints on:
+  - `sender_id`
+  - `recipient_id`
+
+---
+
+# Indexing Strategy
+
+## Automatically Indexed
+- All Primary Keys
+
+## Additional Indexes
+
+| Table | Indexed Column |
+|---|---|
+| User | email |
+| Property | host_id |
+| Property | location |
+| Booking | property_id |
+| Booking | user_id |
+| Booking | status |
+| Payment | booking_id |
+| Review | property_id |
+| Message | sender_id |
+| Message | recipient_id |
+
+---
+
+# Additional Recommended Constraints
+
+## Booking Date Validation
+
+```sql
+CHECK (start_date < end_date)
+```
+
+## Positive Values
+
+```sql
+CHECK (price_per_night > 0)
+CHECK (total_price > 0)
+CHECK (amount > 0)
+```
+
+## Prevent Duplicate Reviews
+
+```sql
+UNIQUE(property_id, user_id)
+```
+
+---
+
+# Database Normalization
+
+This schema follows:
+
+- First Normal Form (1NF)
+- Second Normal Form (2NF)
+- Third Normal Form (3NF)
+
+---
+
+# ER Diagram Overview
+
+```text
+User
+ ├── Property
+ ├── Booking
+ ├── Review
+ └── Message
+
+Property
+ ├── Booking
+ └── Review
+
+Booking
+ └── Payment
+```
+
+---
+
+# Technologies
+
+- Relational Database Management System (RDBMS)
+- SQL
+- UUID-based primary keys
+- Indexed foreign keys for optimization
+
+---
 ## Feature Breakdown
 
 ### 1. User Management
