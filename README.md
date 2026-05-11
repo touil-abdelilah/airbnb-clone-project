@@ -7,11 +7,12 @@ Airbnb Clone Project is a comprehensive, real-world application designed to simu
 
 ## Technology Stack
 <!-- 
-- Frontend: React, Tailwind CSS
-- Backend: Node.js, Express
-- Database: PostgreSQL
-- Authentication: JWT
+- Frontend: 
+- Backend: 
+- Database: 
+- Authentication: 
 -->
+## Database Design
 
 ## Feature Breakdown
 
