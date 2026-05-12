@@ -256,16 +256,134 @@ Booking
 
 ---
 
-# Technologies
+# Feature Breakdown
 
-- Relational Database Management System (RDBMS)
-- SQL
-- UUID-based primary keys
-- Indexed foreign keys for optimization
+## 1. User Management
+
+### User Registration
+- Allow users to sign up as either:
+  - Guests
+  - Hosts
+- Use secure authentication methods such as **JWT (JSON Web Tokens)**.
+
+### User Login and Authentication
+- Implement login using:
+  - Email and password
+- Support OAuth authentication providers such as:
+  - Google
+  - Facebook
+
+### Profile Management
+- Enable users to:
+  - Update profile information
+  - Upload profile photos
+  - Manage contact information
+  - Set personal preferences
 
 ---
-## Feature Breakdown
 
+## 2. Property Listings Management
+
+### Add Listings
+Hosts should be able to create property listings with details including:
+- Title
+- Description
+- Location
+- Price per night
+- Amenities
+- Availability
+
+### Edit/Delete Listings
+- Hosts can update existing property listings.
+- Hosts can remove listings when necessary.
+
+---
+
+## 3. Search and Filtering
+
+Implement search functionality that allows users to find properties based on:
+
+- Location
+- Price range
+- Number of guests
+- Amenities:
+  - Wi-Fi
+  - Pool
+  - Pet-friendly
+  - Parking
+  - etc.
+
+### Pagination
+- Include pagination support for handling large datasets efficiently.
+
+---
+
+## 4. Booking Management
+
+### Booking Creation
+- Guests can book properties for selected dates.
+- Prevent double bookings using proper date validation.
+
+### Booking Cancellation
+- Allow guests or hosts to cancel bookings according to the cancellation policy.
+
+### Booking Status Tracking
+Track booking states such as:
+- Pending
+- Confirmed
+- Canceled
+- Completed
+
+---
+
+## 5. Payment Integration
+
+Integrate secure payment gateways such as:
+- Stripe
+- PayPal
+
+### Payment Features
+- Handle upfront guest payments.
+- Support automatic payouts to hosts after booking completion.
+- Enable support for multiple currencies.
+
+---
+
+## 6. Reviews and Ratings
+
+### Guest Reviews
+- Guests can leave:
+  - Ratings
+  - Written reviews
+
+### Host Responses
+- Hosts can respond to guest reviews.
+
+### Review Validation
+- Ensure reviews are tied to completed bookings to prevent abuse and fake reviews.
+
+---
+
+## 7. Notifications System
+
+Implement both **email** and **in-app notifications** for:
+- Booking confirmations
+- Booking cancellations
+- Payment updates
+- Reservation reminders
+
+---
+
+## 8. Admin Dashboard
+
+Provide an admin interface for managing and monitoring:
+- Users
+- Property listings
+- Bookings
+- Payments
+- Platform activities
+
+---
 
 
 ---
