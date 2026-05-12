@@ -266,31 +266,12 @@ Booking
 ---
 ## Feature Breakdown
 
-### 1. User Management
-Allows users to register, log in, and manage their profiles securely. Authentication ensures only verified users can book properties or host their own listings.
 
-### 2. Property Management
-Hosts can create, update, and delete property listings with descriptions, images, location data, and pricing. This feature powers the core hosting experience.
-
-### 3. Booking System
-Enables users to search for available properties by location and date, then book them through an intuitive interface. Manages availability and prevents double bookings.
-
-### 4. Search and Filtering
-Users can filter properties based on price, date availability, amenities, and more. This enhances the user experience by making it easier to find suitable stays.
-
-### 5. Reviews and Ratings
-After their stay, users can leave reviews and ratings for properties. This builds trust in the platform and helps future guests make informed decisions.
-
-### 6. Favorites (Wishlist)
-Users can save properties to a favorites list for quick access later. This allows guests to plan trips more efficiently.
-
-### 7. Admin Dashboard *(Optional)*
-An admin panel to manage users, properties, and bookings. Useful for platform moderators to monitor activities and enforce rules.
 
 ---
 ## API Security
 
-Securing backend APIs is a critical part of the Airbnb Clone project to ensure data integrity, user trust, and protection against malicious activities. Below are the key security measures that will be implemented:
+
 
 ### 1. Authentication
 Only registered users can access protected routes using secure login systems (e.g., JWT or OAuth). Authentication helps verify the identity of users and prevents unauthorized access to accounts and sensitive operations.
@@ -319,15 +300,6 @@ Security is crucial in this project to protect user personal data, maintain syst
 
 CI/CD (Continuous Integration and Continuous Deployment) pipelines automate the process of testing, building, and deploying code changes. They help ensure that new features or bug fixes are integrated smoothly without breaking the existing functionality.
 
-For the Airbnb Clone project, CI/CD is important because it:
-- Automates testing to catch errors early.
-- Speeds up development by reducing manual deployment steps.
-- Ensures consistent and reliable delivery of updates to production or staging environments.
-
-### Tools Used:
-- **GitHub Actions**: Automates workflows such as testing and deploying the application when code is pushed or a pull request is made.
-- **Docker**: Standardizes the development and deployment environments using containers.
-- **Docker Hub or GitHub Packages**: Stores and manages container images.
 
 
 
